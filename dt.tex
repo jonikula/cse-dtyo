@@ -7,7 +7,7 @@
 \documentclass[a4paper, 12pt,titlepage]{dithesis}
 \usepackage[english,finnish]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}  
+\usepackage[T1]{fontenc}
 \usepackage{times}
 \usepackage{tabularx}
 \usepackage{graphicx}
@@ -42,38 +42,75 @@
 
 %\selectlanguage{finnish}
 
-\otsikko{Suomenkielinen nimi}
-\title{English title}
+\otsikko{Mallipohjainen testaustyökalu Asioiden Internet-järjestelmälle}
+\title{Model-Based testing tool for Internet of Things systems}
 
-\etunimi{Teemu}
-\sukunimi{Teekkari}
-\valvoja{prof. Juha Röning}
+\etunimi{Joonas}
+\sukunimi{Nikula}
+\valvoja{prof. Susanna Pirttikangas}
 \koulutusohjelma{information} % {information | electrical}
-\vuosi{2016}
+\vuosi{2017}
 \tyo{Master} % {Bachelor | Master}
 \kieli{english} % {finnish | english}
 
 \begin{document}
 
-\begin{titlepage}
-	\centering{\includegraphics*[width=0.3\textwidth]{uni_logo}\\}
-	{\sffamily\fontsize{9}{1pt}\selectfont FACULTY OF INFORMATION TECHNOLOGY AND ELECTRICAL ENGINEERING\\}
-	%{\sffamily\fontsize{9}{1pt}\selectfont TIETO- JA SÄHKÖTEKNIIKAN TIEDEKUNTA\\}
-	\vspace{65 mm}
-	{\textbf{\fontsize{16}{19pt}\selectfont \getfirstname\ \getlastname }\\}
-	\vspace{15 mm}
-	{\textbf{\fontsize{18}{22pt}\selectfont FIRST FRONT PAGE TITLE LINE\\ADDITIONAL IF NEEDED\\}}
-	\vspace{60 mm}
-	{\fontsize{14}{17}\selectfont Master's Thesis \\Degree Programme in Computer Science and Engineering \\ Month 20xx\\}
-	%{\fontsize{14}{17}\selectfont Diplomityö \\Tietotekniikan tutkinto-ohjelma \\ Month 20xx\\}
-\end{titlepage}
+%% Computer science and engineering
+%\iffalse     % comment multiple lines with \iffalse, \fi -pair
+    \begin{titlepage}
+        \centering{\includegraphics*[width=0.3\textwidth]{uni_logo}\\}
+        {\sffamily\fontsize{9}{1pt}\selectfont FACULTY OF INFORMATION TECHNOLOGY AND ELECTRICAL ENGINEERING\\}
+        %{\sffamily\fontsize{9}{1pt}\selectfont TIETO- JA SÄHKÖTEKNIIKAN TIEDEKUNTA\\}
+        \vspace{65 mm}
+        {\textbf{\fontsize{16}{19pt}\selectfont \getfirstname\ \getlastname }\\}
+        \vspace{15 mm}
+        {\textbf{\fontsize{18}{22pt}\selectfont MODEL BASED TESTING TOOL FOR IOT APPLICATIONS\\}}
+        \vspace{60 mm}
+        {\fontsize{14}{17}\selectfont Master's Thesis \\Degree Programme in Computer Science and Engineering \\ October 2017\\}
+        %{\fontsize{14}{17}\selectfont Diplomityö \\Tietotekniikan tutkinto-ohjelma \\ Month 20xx\\}
+    \end{titlepage}
+%\fi
+
+%% Electrical engineering
+\iffalse     % comment multiple lines with \iffalse, \fi -pair
+    \begin{titlepage}
+        \centering{\includegraphics*[width=0.25\textwidth]{uni_logo}\\}
+        {\sffamily\fontsize{8}{10}\selectfont DEGREE PROGRAMME IN ELECTRICAL ENGINEERING\\}
+        %{\sffamily\fontsize{8}{10}\selectfont SÄHKÖTEKNIIKAN KOULUTUSOHJELMA\\}
+        \vspace{50 mm}
+        {\textbf{\fontsize{20}{24}\selectfont MASTER'S THESIS }\\}
+        %{\textbf{\fontsize{20}{24}\selectfont DIPLOMITYÖ }\\}
+        \vspace{18 pt}
+        {\textbf{\fontsize{18}{22}\selectfont TITLE IS WRITTEN HERE \\ ADDITIONAL LINE IF NEEDED \\}}
+        \vspace{60 mm}
+        {\fontsize{12}{15}\selectfont
+            \begin{table}[ht]
+                \centering
+                \begin{tabular}{p{4.5cm}l}
+                    Author & \getfirstname\ \getlastname \\ \\
+                    %Tekijä & Etunimi sukunimi \\ \\
+                    Supervisor & Firstname Surname \\ \\
+                    %Valvoja & Etunimi sukunimi \\ \\
+                    Second Examiner & Firstname Surname \\ \\
+                    %Toinen tarkastaja & Etunimi sukunimi \\ \\
+                    (Technical advisor & Firstname Surname) \\
+                    %(Työn tekninen ohjaaja & Etunimi sukunimi) \\
+            \end{tabular}
+        \end{table}}
+        {\fontsize{12}{15}\selectfont Month 20xx}
+    \end{titlepage}
+\fi
+
 
 \selectlanguage{english}
 
 \begin{abstract}
-This is a sample abstract.
+In this thesis I will study model based testing (MBT) from the viewpoint of a testing tool developer
+and present a prototype of a testing tool or a solution based on an existing testing tool that fulfills 
+a set of requirements described later in this thesis. The tool is meant to be a prototype for generating tests 
+for a network of IoT devices with a high level of abstraction.    
 
-\keywords sample, keywords
+\keywords Testing, Model Based Testing, Software Development, Internet of Things
 
 \end{abstract}
 
@@ -81,7 +118,7 @@ This is a sample abstract.
 \begin{tiivistelma}
 Esimerkkitiivistelmä
 
-\avainsanat esimerkki, sanoja
+\avainsanat Testaus, Mallipohjainen testaus, ohjelmistokehitys, esineiden internet
 \end{tiivistelma}
 
 \selectlanguage{english}
@@ -91,17 +128,9 @@ Esimerkkitiivistelmä
 %\tableofcontents
 
 \otsake{FOREWORD}
-This \LaTeX -template has been used by various people at department
-since the late 1990's, and has slowly improved over time.  It is still
-somewhat rough at the edges, but hopefully will be helpful in reducing
-some of the pain involved in writing a diploma thesis.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sagittis eleifend dui sit amet luctus. Nullam vitae turpis id sapien viverra tincidunt quis id turpis. Etiam eget sodales eros. Cras suscipit porttitor odio a scelerisque. Proin et velit sed dolor gravida tincidunt. Nullam quis suscipit mi. Pellentesque id consectetur mauris, ac bibendum mi. Nunc tincidunt ac augue vitae elementum.
 
-Contributors to the template include Mika Korhonen (original author),
-Pekka Pietikäinen, Christian Wieser and Teemu Tokola.  If you make any
-improvements to this template, please contact ouspg@ee.oulu.fi, and we
-will try to include them in further revisions.
-
-The template was updated during the summer of 2013 by Juha Kylmänen.
+Sed et semper quam. Praesent et tincidunt nunc. Aliquam facilisis egestas urna molestie hendrerit. Duis eu nisl ultrices, pretium dui ut, euismod lorem. Cras mattis justo id laoreet vehicula. Donec dictum finibus lorem. Quisque posuere, dui sit amet feugiat luctus, sapien nunc interdum nibh, nec pulvinar lectus nisl id tortor. Cras eget hendrerit metus.
 %\allekirjoitus{Oulu, Finland \today}
 
 \otsake{ABBREVIATIONS}
@@ -118,7 +147,14 @@ The template was updated during the summer of 2013 by Juha Kylmänen.
 %Johdanto
 \chapter{Introduction}
 \sivunumerot
+\thispagestyle{empty}
 \input{introduction} % ./introduction.tex
+
+\chapter{Model-based Testing}
+\input{theory}
+
+\chapter{Analysis of current tools}
+\input{analysis}
 
 \chapter{Implementing something}
 \input{implementation}  % ./implementation.tex

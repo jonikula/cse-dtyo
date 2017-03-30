@@ -1,0 +1,86 @@
+This chapter outlines the key issues of software testing as well as previous testing methods and their shortcomings.
+After identifying these key issues and problems, the solutions offered by adopting model-based testing are presented.
+The model-based testing process is then studied further. The steps from model generation to analysis of results are presented 
+before focusing more on the key part of the testing process: the model. 
+
+\section{Software testing}
+ -- Short quote on testing from \cite{swebok}
+ 	-- Software testing consists of dynamic verification of the behaviour...
+ 	
+ -- Key features according to \cite{tools}
+ 	-- Dynamic 
+ 	-- Finite
+ 	-- Selected
+ 	-- Expected
+ 	
+ -- Definition of testing according to \cite{tools} pg 5
+ 
+ -- Tested characteristics, scale and white vs. black box
+ 
+ -- Model-based testing usually functional black box testing
+
+\section{Testing methods and key issues}
+-- designing tc:s
+
+-- test execution and results analysis
+
+-- coverage analysis
+
+-- Manual testing
+
+-- Capture/replay testing
+
+-- Script-based testing processes
+
+-- Solved and remaining problems
+
+\section{Definition of model based testing}
+-- Four main approaches known as model-based testing:
+	-- generation of input data from domain model
+	-- \cite{tools} pg 7.
+	
+-- Model based testing is in essence a method to automate the design of black-box tests. It can be applied to all levels of SUT scale and it is usually empoyed in functional testing. It can also be applied to robustness- and performance testing, but it is not widely used in the latter even though some applications in that area may be found \cite{tools}.
+	
+
+\section{Model based testing process}
+-- Main idea is to take the informal, mental model of expected SUT behaviour and create a formal model that enables automatic tc creation. 
+
+-- Five main steps
+	-- Model SUT and/or it's environment
+	-- Generate abstract tests
+	-- Concretize abs. tests into executable tests
+	-- Execute tests and assign verdicts
+	-- Analyze results
+	
+
+
+\subsection{The model}
+-- Must be concice and precise. 
+
+-- Most essential thing in MBT.
+
+-- Problem: Using development models or develop entirely own models for testing? 
+	-- usually a good middle ground, reuse of high-level diagrams and some use cases from dev. models and adding behavioural details nexessary for MBT.
+
+-- Work must be spent on developing initial model, but pays off in lower maintenance costs.
+	-- requirements evolution handled by evolving model, new tc:s then generated automatically from model! 
+	
+\subsubsection{Model design process}
+-- First decide on level of abstraction
+
+-- CD of SUT parts relevant to model is a good starting point.
+
+-- Useful to create smaller models for subsystems instead of large, complex models for the entire system. 
+
+-- Decide on which parts to model
+
+-- identify data and operations required for modeling, with primary focus on SUT.
+	-- Omit everything that is unnecessary for the model and include only the operations you wish to test.
+	
+-- Design model to meet test objectives!
+
+-- Model operations do not need to copy SUT operations, can instead correspond to a sequence of operations or a subset of a single more complex SUT operation!
+
+-- Select notation
+
+\subsection{Advantages and disadvantages}

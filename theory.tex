@@ -1,42 +1,25 @@
 This chapter outlines the key issues of software testing as well as previous testing methods and their shortcomings.
 After identifying these key issues and problems, the solutions offered by adopting model-based testing are presented.
 The model-based testing process is then studied further. The steps from model generation to analysis of results are presented 
-before focusing more on the key part of the testing process: the model. 
+before focusing more on the key part of the testing process: the model. The text in this chapter is based largely on The Guide to the Software Engineering Body of Knowledge \cite{swebok} and Practical Model-Based Testing: A Tools Approach. \cite{tools}
 
 \section{Software testing}
-The Guide to the Software Engineering Body of Knowledge defines software testing as the dynamic verification that a program provides expected behaviors on a finite set of test cases, suitably selected from the usually infinite execution domain. \cite{swebok}
-From this definition, the authors extracted four words that describe the software testing knowledge area: dynamic, finite, selected and expected.
+The Guide to the Software Engineering Body of Knowledge defines software testing as the dynamic verification that a program provides expected behaviors on a finite set of test cases, suitably selected from the usually infinite execution domain. From this definition, the authors extracted four words that describe the software testing knowledge area: dynamic, finite, selected and expected.
 
-The authors use of the word dynamic to describe testing excludes the static analysis of the program from the field of testing, although it is described as complementary and different to dynamic testing. \cite{swebok} To be precise, the term dynamic is used to highlight the fact that even though testing always implies executing the program with selected inputs, the input values alone are not always sufficient to specify a test. This is due to the fact that complex, nondeterministic systems might react differently to the same input, depending on the state the software and the environment. \cite{swebok}
-Actually executing the program during testing in a real or simulated environment is a significant advantage. The compiler, the libraries, the operating system and many other parts of the solution are tested alongside the correctness of the software design and code. \cite{tools}
+The authors use of the word dynamic to describe testing excludes the static analysis of the program from the field of testing, although it is described as complementary and different to dynamic testing. To be precise, the term dynamic is used to highlight the fact that even though testing always implies executing the program with selected inputs, the input values alone are not always sufficient to specify a test. This is due to the fact that complex, nondeterministic systems might react differently to the same input, depending on the state the software and the environment.
+Actually executing the program during testing in a real or simulated environment is a significant advantage. The compiler, the libraries, the operating system and many other parts of the solution are tested alongside the correctness of the software design and code.
 
-Testing is finite by necessity. Even in simple programs, so many possible test cases exist that covering them all could require more time and resources than is practical. For this reason, testing is conducted on a subset of tests, determined by risk and prioritization criteria. \cite{swebok} This also highlights the issue of test selection.
+Testing is finite by necessity. Even in simple programs, so many possible test cases exist that covering them all could require more time and resources than is practical. For this reason, testing is conducted on a subset of tests, determined by risk and prioritization criteria. This also highlights the issue of test selection.
 
-Test selection is a complex problem. It is also one of the key challenges in testing. There are many proposed test techinques and software engineers need to be aware of their effectiveness in a given situation. \cite{swebok} There are several informal strategies, such as equivalence class and boundary value testing that can help in determining the tests that are the most likely of being effective, and some of these techniques can also be applied in model-based testing. \cite{tools}
+Test selection is a complex problem. It is also one of the key challenges in testing. There are many proposed test techinques and software engineers need to be aware of their effectiveness in a given situation. There are several informal strategies, such as equivalence class and boundary value testing that can help in determining the tests that are the most likely of being effective, and some of these techniques can also be applied in model-based testing.
 
-The final key word, expected, is related to the oracle problem. After test execution, the result need to be analysed and a decision on the correctness of the behaviour needs to be made. \cite{tools} The observed behaviour can be checked against user needs, specifications, anticipated behaviour and other kinds of requirements and expectations. \cite{swebok} Model-based testing can also be applied to generation of oracles as well as test inputs. \cite{tools}
- 
- -- Tested characteristics, scale and white vs. black box
- 
- -- Model-based testing usually functional black box testing
-
-\section{Testing methods and key issues}
--- designing tc:s
-
--- test execution and results analysis
-
--- coverage analysis
-
--- Manual testing
-
--- Capture/replay testing
-
--- Script-based testing processes
-
--- Solved and remaining problems
+The final key word, expected, is related to the oracle problem. After test execution, the result need to be analysed and a decision on the correctness of the behaviour needs to be made. The observed behaviour can be checked against user needs, specifications, anticipated behaviour and other kinds of requirements and expectations. Model-based testing can also be applied to generation of oracles as well as test inputs.
 
 \section{Definition of model based testing}
-The following approaches are the ones usually known as model-based testing. \cite{tools}
+The different kinds of testing can be described using a three-axis model presented by Tretmans \cite{tretmans}.  This model can be used to describe model-based testing as well. In the model, the axis represent the scale of the tested component, the source the tests are derived from and the characteristics being tested. The scale of the tested component runs all the way from software units, such as functions and classes, to individual components of software, integration testing and system testing. The second axis, characteristics, contains functional testing, robustness testing, performance testing and usability testing. The third axis is split into two by black-box and white-box testing. Using this model, model-based testing can be described as functional black-box testing and it can be applied to the entire SUT scale. There are some applications of model-based testing in performance and robustness testing as well, but especially performance testing methods for model-based testing are still under development.
+
+
+The following approaches are the ones usually known as model-based testing.
  
 \begin{enumerate}
 	\item Generation of test input data from a domain model
@@ -45,15 +28,36 @@ The following approaches are the ones usually known as model-based testing. \cit
 	\item Generation of test scripts from abstract tests
 \end{enumerate}
 
-Each of these can be said to be model-based testing, but some of them are not quite suitable when model-based testing is viewed in the context of tool development. In this context, the third definition is the one that draws the focus. \cite{tools}
-The first definition is an integral part of model-based testing, but it does not solve the entire problem of test design because it does not provide information of whether a test has passed or failed. Similarly to the first, the second definition does not provide information on the success or failure of the test case in any useful capacity, since it does not model the behaviour of the SUT. Rather it focuses on the environment around the SUT. The fourth definition is very different from the other three definitions. It assumes that an abstract description of a test case exists, perhaps in the form of an UML sequence diagram. This description is then transformed into an executable test script. \cite{tools}
+Each of these can be said to be model-based testing, but some of them are not quite suitable when model-based testing is viewed in the context of tool development. In this context, the third definition is the one that draws the focus.
+The first definition is an integral part of model-based testing, but it does not solve the entire problem of test design because it does not provide information of whether a test has passed or failed. Similarly to the first, the second definition does not provide information on the success or failure of the test case in any useful capacity, since it does not model the behaviour of the SUT. Rather it focuses on the environment around the SUT. The fourth definition is very different from the other three definitions. It assumes that an abstract description of a test case exists, perhaps in the form of an UML sequence diagram. This description is then transformed into an executable test script.
 
-The third definition, the generation of test cases with oracles from a behavior model, is the one that gives us the most useful description of model-based testing. With this definition, the complete testing process can be automated, given a suitable model, and it produces test sequences that are suitable for transformation into executable test scripts. \cite{tools}
+The third definition, the generation of test cases with oracles from a behavior model, is the one that gives us the most useful description of model-based testing. With this definition, the complete testing process can be automated, given a suitable model, and it produces test sequences that are suitable for transformation into executable test scripts.
 
-With this view of model-based testing, Utting and Legeard define model-based testing as the automation of the design of black-box tests. \cite{tools}
-	
--- Model based testing is in essence a method to automate the design of black-box tests. It can be applied to all levels of SUT scale and it is usually empoyed in functional testing. It can also be applied to robustness- and performance testing, but it is not widely used in the latter even though some applications in that area may be found \cite{tools}.
-	
+With this view of model-based testing, Utting and Legeard define model-based testing as automation of the design of black-box tests.
+
+\section{Testing methods and key issues}
+As established earlier, model-based testing is usually applied to functional testing. For functional testing, Legeard and Utting present the following three key issues:
+
+\begin{enumerate}
+	\item Design of test cases
+	\item Test execution and analysis of results
+	\item Verifying how the tests cover the requirements
+\end{enumerate}
+
+There are several classic testing processes that are widely used and that try to address these issues. These processes are manual testing, capture/replay testing, script based testing and keyword-driven automated testing.
+
+\subsection{A Manual Testing Process}
+An entirely manual testing process is still widely used in the industry, even though it is the earliest and simplest for of testing. In manual testing, the test designer creates a set of test cases based on the requirements documentation and the objectives, strategies and other information presented in a test plan. Test design is entirely manual and it's output is a human-readable document that describes each test case. The level of precision in these kinds of test case descriptions can be very low, as the low-level details regarding the SUT interaction can be left to the common sense of the tester. This type of test case design is very time consuming and it generally does not ensure systematic coverage of the functionality.
+
+Here test execution is also manual. The manual tester executes each test case by going through the steps of that test case, interacting directly with the SUT or with a test execution environment and analysing the output before recording the verdict for that test case.
+
+This process is repeated every time a new release needs to be tested, and as is apparent from the process, it can be quite time consuming and resource intensive. The cost of testing each release is directly related to the size of the test suite and the cost of testing is constant as long as the size of the suite remains the same. This often results in the need to reduce the number of test cases being run as the software evolves, which introduces significant risks regarding product maturity, stability and robustness.
+
+-- Capture/replay testing
+
+-- Script-based testing processes
+
+-- Solved and remaining problems
 
 \section{Model based testing process}
 TÄHÄN LISÄTÄÄN KUVA

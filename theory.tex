@@ -1,0 +1,164 @@
+This chapter outlines the key issues of software testing as well as previous testing methods and their shortcomings.
+After identifying these key issues and problems, the solutions offered by adopting model-based testing are presented.
+The model-based testing process is then studied further. The steps from model generation to analysis of results are presented 
+before focusing more on the key part of the testing process: the model. 
+
+\section{Software testing}
+The Guide to the Software Engineering Body of Knowledge defines software testing as the dynamic verification that a program provides expected behaviors on a finite set of test cases, suitably selected from the usually infinite execution domain. \cite{swebok}
+From this definition, the authors extracted four words that describe the software testing knowledge area: dynamic, finite, selected and expected.
+
+The authors use of the word dynamic to describe testing excludes the static analysis of the program from the field of testing, although it is described as complementary and different to dynamic testing. \cite{swebok} To be precise, the term dynamic is used to highlight the fact that even though testing always implies executing the program with selected inputs, the input values alone are not always sufficient to specify a test. This is due to the fact that complex, nondeterministic systems might react differently to the same input, depending on the state the software and the environment. \cite{swebok}
+Actually executing the program during testing in a real or simulated environment is a significant advantage. The compiler, the libraries, the operating system and many other parts of the solution are tested alongside the correctness of the software design and code. \cite{tools}
+
+Testing is finite by necessity. Even in simple programs, so many possible test cases exist that covering them all could require more time and resources than is practical. For this reason, testing is conducted on a subset of tests, determined by risk and prioritization criteria. \cite{swebok} This also highlights the issue of test selection.
+
+Test selection is a complex problem. It is also one of the key challenges in testing. There are many proposed test techinques and software engineers need to be aware of their effectiveness in a given situation. \cite{swebok} There are several informal strategies, such as equivalence class and boundary value testing that can help in determining the tests that are the most likely of being effective, and some of these techniques can also be applied in model-based testing. \cite{tools}
+
+The final key word, expected, is related to the oracle problem. After test execution, the result need to be analysed and a decision on the correctness of the behaviour needs to be made. \cite{tools} The observed behaviour can be checked against user needs, specifications, anticipated behaviour and other kinds of requirements and expectations. \cite{swebok} Model-based testing can also be applied to generation of oracles as well as test inputs. \cite{tools}
+ 
+ -- Tested characteristics, scale and white vs. black box
+ 
+ -- Model-based testing usually functional black box testing
+
+\section{Testing methods and key issues}
+-- designing tc:s
+
+-- test execution and results analysis
+
+-- coverage analysis
+
+-- Manual testing
+
+-- Capture/replay testing
+
+-- Script-based testing processes
+
+-- Solved and remaining problems
+
+\section{Definition of model based testing}
+The following approaches are the ones usually known as model-based testing. \cite{tools}
+ 
+\begin{enumerate}
+	\item Generation of test input data from a domain model
+	\item Generation of test cases from an environment model
+	\item Generation of test cases with oracles from a behavior model
+	\item Generation of test scripts from abstract tests
+\end{enumerate}
+
+Each of these can be said to be model-based testing, but some of them are not quite suitable when model-based testing is viewed in the context of tool development. In this context, the third definition is the one that draws the focus. \cite{tools}
+The first definition is an integral part of model-based testing, but it does not solve the entire problem of test design because it does not provide information of whether a test has passed or failed. Similarly to the first, the second definition does not provide information on the success or failure of the test case in any useful capacity, since it does not model the behaviour of the SUT. Rather it focuses on the environment around the SUT. The fourth definition is very different from the other three definitions. It assumes that an abstract description of a test case exists, perhaps in the form of an UML sequence diagram. This description is then transformed into an executable test script. \cite{tools}
+
+The third definition, the generation of test cases with oracles from a behavior model, is the one that gives us the most useful description of model-based testing. With this definition, the complete testing process can be automated, given a suitable model, and it produces test sequences that are suitable for transformation into executable test scripts. \cite{tools}
+
+With this view of model-based testing, Utting and Legeard define model-based testing as the automation of the design of black-box tests. \cite{tools}
+	
+-- Model based testing is in essence a method to automate the design of black-box tests. It can be applied to all levels of SUT scale and it is usually empoyed in functional testing. It can also be applied to robustness- and performance testing, but it is not widely used in the latter even though some applications in that area may be found \cite{tools}.
+	
+
+\section{Model based testing process}
+TÄHÄN LISÄTÄÄN KUVA
+
+-- Main idea is to take the informal, mental model of expected SUT behaviour and create a formal model that enables automatic tc creation. 
+
+-- Five main steps
+	-- Model SUT and/or it's environment
+	-- Generate abstract tests
+	-- Concretize abs. tests into executable tests
+	-- Execute tests and assign verdicts
+	-- Analyze results
+
+\subsection{The model}
+-- Must be concice and precise. 
+
+-- Most essential thing in MBT.
+
+-- Problem: Using development models or develop entirely own models for testing? 
+	-- usually a good middle ground, reuse of high-level diagrams and some use cases from dev. models and adding behavioural details nexessary for MBT.
+
+-- Work must be spent on developing initial model, but pays off in lower maintenance costs.
+	-- requirements evolution handled by evolving model, new tc:s then generated automatically from model! 
+	
+\subsubsection{Model design process}
+-- First decide on level of abstraction
+
+-- CD of SUT parts relevant to model is a good starting point.
+
+-- Useful to create smaller models for subsystems instead of large, complex models for the entire system. 
+
+-- Decide on which parts to model
+
+-- identify data and operations required for modeling, with primary focus on SUT.
+	-- Omit everything that is unnecessary for the model and include only the operations you wish to test.
+	
+-- Design model to meet test objectives!
+
+-- Model operations do not need to copy SUT operations, can instead correspond to a sequence of operations or a subset of a single more complex SUT operation!
+
+-- Select notation
+
+\subsection{Advantages and disadvantages}
+
+\subsubsection{Advantages}
+-- Saves resources after initial training period when compared to other methods
+
+-- Similar or better performance in finding issues in implementation
+
+-- Lots of issues found in requirements due to precision required in model generation
+
+-- Improved coverage
+
+-- Promotes maturity in SUT development process
+
+-- Traceability from test cases to requirements
+
+\subsubsection{Disadvantages}
+-- Requires reasonable maturity from SUT development process and testing processes, as model generation requires proper requirements for SUT and well made models in requirements help reduce time required to generate models for testing.
+
+-- Also requires experience with automated test execution
+
+-- Requires different skills from testers: Modeling skills from test designers, programming skills. Implies some training costs and an initial learning curve.
+
+-- Pain factors after adopting MBT: Outdated requirements cause lots of false errors. Eperience required from testers to recognice where modeling SUT may be difficult and where manually designed test cases might be a better approach. Generated test cases might not always be intuitive to analyze compared to manually created ones. Metrics like "number of test cases run" become useless as it is trivial to generate enormous test suites.
+
+\section{Test selection criteria}
+-- Means of communicating choice of tests to tool
+
+-- Not necessary to have knowledge of SUT code to generate tests: Instead based on model and requirements.
+
+-- Model vs. SUT coverage criteria are complementary, use both!
+
+-- Coverage criterion can be used to measure suiote adequacy or to define a stopping point for test generation.
+
+-- Also prescriptive from tool point of view: "Try to achieve X coverage."
+
+-- Families: Structural model coverage, data coverage, fault-model, requirements-based, explicit, statistical
+
+\subsection{Structural model coverage}
+-- Major issue in MBT is to measure and maximize coverage of model
+
+-- Control-flow oriented, data-flow oriented, transition-based, UML-based
+
+\subsubsection{Control-flow oriented coverage criterion}
+--  Derived from classical code coverage criteria.
+
+-- Statement-, decision-, and path coverage, where statement coverage is the weakest and path coverage the strongest.
+
+-- Condidion coverage, decision/condition coverage, full predicate coverage, modified cond./dec. coverage, multiple condition coverage.
+
+\subsubsection{Transition-based coverage criterion}
+-- Useful for SUT:s and models that can be represented as FSMs or EFSMs (or LTS).
+
+-- Transition based models made up of transitions and states.
+
+-- All-transitions coverage, all-states coverage, all-configurations coverage, all-transition-pair coverage, all loop-free paths, all one-loop paths, all round-trips, all-paths.
+
+-- Configuration: Current state of a parallel statechart.
+
+-- All round-trips more usually more useful than all one-loop paths. It is weaker, but gives a linear number of tests (all one-loop paths usually exponential). TÄHÄN LÄHDE Testing object oriented systems: ... R.V. Binder.
+
+-- Usually a good minimum requirement for FSM type models is to produce suite with all-transitions coverage requirement.
+
+\subsection{Data-flow oriented coverage}
+-- Working with definitions and uses of data variables
+
+-- All-definitions, all definition/use paths, all use paths.

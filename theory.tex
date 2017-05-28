@@ -49,12 +49,28 @@ There are several classic testing processes that are widely used and that try to
 \subsection{A Manual Testing Process}
 An entirely manual testing process is still widely used in the industry, even though it is the earliest and simplest for of testing. In manual testing, the test designer creates a set of test cases based on the requirements documentation and the objectives, strategies and other information presented in a test plan. Test design is entirely manual and it's output is a human-readable document that describes each test case. The level of precision in these kinds of test case descriptions can be very low, as the low-level details regarding the SUT interaction can be left to the common sense of the tester. This type of test case design is very time consuming and it generally does not ensure systematic coverage of the functionality.
 
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics*[width=0.3\textwidth]{kuvat/Manual_process}
+	\end{center}
+	\caption{Manual testing process}
+	\label{fig:manualprocess}
+\end{figure}
+
 Here test execution is also manual. The manual tester executes each test case by going through the steps of that test case, interacting directly with the SUT or with a test execution environment and analysing the output before recording the verdict for that test case.
 
 This process is repeated every time a new release needs to be tested, and as is apparent from the process, it can be quite time consuming and resource intensive. The cost of testing each release is directly related to the size of the test suite and the cost of testing is constant as long as the size of the suite remains the same. This often results in the need to reduce the number of test cases being run as the software evolves, which introduces significant risks regarding product maturity, stability and robustness.
 
 \subsection{Capture/replay Testing Process}
 Capture/replay testing is a way to add automation to the manual testing process. The initial steps for this process are similar to that of the manual testing process. The test engineer creates a set of test cases, which he then executes manually. While executing the tests, the engineer uses a tool to capture the steps he performs on the software. These captured steps can then be automatically executed, removing the need to manually re-execute tests that have been previously captured.
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics*[width=0.3\textwidth]{kuvat/CR_process}
+	\end{center}
+	\caption{Capture/replay testing process}
+	\label{fig:crprocess}
+\end{figure}
 
 The idea here is solid, but it suffers similar problems as the manual testing process. It still initially requires lots of manual work to execute the test cases. The captured tests need to also be re-executed manually every time the tested system changes as the captured test might no longer work on the new version of the software. In this case the tests need to be manually redone and captured again to get the automation to work with the new software.
 

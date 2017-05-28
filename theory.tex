@@ -53,9 +53,16 @@ Here test execution is also manual. The manual tester executes each test case by
 
 This process is repeated every time a new release needs to be tested, and as is apparent from the process, it can be quite time consuming and resource intensive. The cost of testing each release is directly related to the size of the test suite and the cost of testing is constant as long as the size of the suite remains the same. This often results in the need to reduce the number of test cases being run as the software evolves, which introduces significant risks regarding product maturity, stability and robustness.
 
--- Capture/replay testing
+\subsection{Capture/replay Testing Process}
+Capture/replay testing is a way to add automation to the manual testing process. The initial steps for this process are similar to that of the manual testing process. The test engineer creates a set of test cases, which he then executes manually. While executing the tests, the engineer uses a tool to capture the steps he performs on the software. These captured steps can then be automatically executed, removing the need to manually re-execute tests that have been previously captured.
 
--- Script-based testing processes
+The idea here is solid, but it suffers similar problems as the manual testing process. It still initially requires lots of manual work to execute the test cases. The captured tests need to also be re-executed manually every time the tested system changes as the captured test might no longer work on the new version of the software. In this case the tests need to be manually redone and captured again to get the automation to work with the new software.
+
+\subsection{Script-based Testing Process}
+A better form of automating testing is based on test scripts. These scripts are used to execute the test on the SUT and they can be automatically triggered for execution on different kinds of triggers, such as time or a commit done on a version control system. In this testing process the test engineer creates test scripts for each of the test cases using a programming or scripting language of some sort and adds them to the test suite. These tests are then automatically executed when necessary. This testing process requires very little manual testing after the test scripts have been created. Some manual testing may be done while developing the test scripts to verify functionality and to help in the development of the scripts.
+
+After the test scripts have been created, only minimal maintenance work needs to be done to make sure the scripts are up to date with the current version of the tested software. Manual work is still needed when initially creating the test scripts but after the initial investment in time the maintenance cost is significantly reduced.
+
 
 -- Solved and remaining problems
 

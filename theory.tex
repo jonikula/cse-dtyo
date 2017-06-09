@@ -46,7 +46,9 @@ As established earlier, model-based testing is usually applied to functional tes
 
 There are several classic testing processes that are widely used and that try to address these issues. These processes are manual testing, capture/replay testing, script based testing and keyword-driven automated testing.
 
-\subsection{A Manual Testing Process}
+\subsection{Previous testing processes}
+During the evolution of software engineering, testing has also been performed using a variety of techniques and processes. These processes and the ways they solve the key issues presented previously are discussed next, starting with the most basic process, the manual testing process.
+
 An entirely manual testing process is still widely used in the industry, even though it is the earliest and simplest for of testing. In manual testing, the test designer creates a set of test cases based on the requirements documentation and the objectives, strategies and other information presented in a test plan. Test design is entirely manual and it's output is a human-readable document that describes each test case. The level of precision in these kinds of test case descriptions can be very low, as the low-level details regarding the SUT interaction can be left to the common sense of the tester. This type of test case design is very time consuming and it generally does not ensure systematic coverage of the functionality.
 
 \begin{figure}[ht]
@@ -57,11 +59,10 @@ An entirely manual testing process is still widely used in the industry, even th
 	\label{fig:manualprocess}
 \end{figure}
 
-Here test execution is also manual. The manual tester executes each test case by going through the steps of that test case, interacting directly with the SUT or with a test execution environment and analysing the output before recording the verdict for that test case.
+Test execution is also manual. The manual tester executes each test case by going through the steps of that test case, interacting directly with the SUT or with a test execution environment and analysing the output before recording the verdict for that test case.
 
 This process is repeated every time a new release needs to be tested, and as is apparent from the process, it can be quite time consuming and resource intensive. The cost of testing each release is directly related to the size of the test suite and the cost of testing is constant as long as the size of the suite remains the same. This often results in the need to reduce the number of test cases being run as the software evolves, which introduces significant risks regarding product maturity, stability and robustness.
 
-\subsection{Capture/replay Testing Process}
 Capture/replay testing is a way to add automation to the manual testing process. The initial steps for this process are similar to that of the manual testing process. The test engineer creates a set of test cases, which he then executes manually. While executing the tests, the engineer uses a tool to capture the steps he performs on the software. These captured steps can then be automatically executed, removing the need to manually re-execute tests that have been previously captured.
 
 \begin{figure}[ht]
@@ -72,18 +73,27 @@ Capture/replay testing is a way to add automation to the manual testing process.
 	\label{fig:crprocess}
 \end{figure}
 
-The idea here is solid, but it suffers similar problems as the manual testing process. It still initially requires lots of manual work to execute the test cases. The captured tests need to also be re-executed manually every time the tested system changes as the captured test might no longer work on the new version of the software. In this case the tests need to be manually redone and captured again to get the automation to work with the new software.
+The idea here is solid, but it suffers similar problems as the manual testing process. It still initially requires lots of manual work to design and execute the test cases. The tests need to be re-executed manually every time the tested system changes as the captured test might no longer work on the new version of the software. In this case the tests need to be manually redone and captured again to get the automation to work with the new software.
 
-\subsection{Script-based Testing Process}
-A better form of automating testing is based on test scripts. These scripts are used to execute the test on the SUT and they can be automatically triggered for execution on different kinds of triggers, such as time or a commit done on a version control system. In this testing process the test engineer creates test scripts for each of the test cases using a programming or scripting language of some sort and adds them to the test suite. These tests are then automatically executed when necessary. This testing process requires very little manual testing after the test scripts have been created. Some manual testing may be done while developing the test scripts to verify functionality and to help in the development of the scripts.
+A further improvement in terms of test automation is a process that relies on test scripts. These scripts are used to execute the test on the SUT and they can be automatically triggered for execution on different kinds of triggers, such as time or a commit done on a version control system. In this testing process the test engineer creates test scripts for each of the test cases using a programming or scripting language of some sort and adds them to the test suite. These tests are then automatically executed when necessary. This testing process requires very little manual testing after the test scripts have been created. Some manual testing may be done while developing the test scripts to verify functionality and to help in the development of the scripts.
 
-After the test scripts have been created, only minimal maintenance work needs to be done to make sure the scripts are up to date with the current version of the tested software. Manual work is still needed when initially creating the test scripts but after the initial investment in time the maintenance cost is significantly reduced.
+After the test scripts have been created, only minimal maintenance work needs to be done to make sure the scripts are up to date with the current version of the tested software. Manual work is still needed when initially creating the test scripts but after the initial investment in time the maintenance cost is significantly reduced. These test scripts also usually include some sort of method to determine the verdict of the test, which makes it easy to automatically generate reports, graphs and other kinds of data. This reduces the time required for analyzing the test results, as all the relevant information can be presented to the tester in a format, which enables him to quickly determine which tests passed without issues, which tests failed for known or expected reasons and which tests require further analysis.
 
+The next step forwards from using test scripts is to raise the level of abstraction of these scripts. Since the most significant maintenance cost for the script-based process is updating the test scripts to match the changes in SUT implementation, the natural solution to reducing it would be to implement some sort of adaptors or helper libraries, which could then be used across multiple test scripts, thus reducing the time spent on maintenance. This idea is implemented in the keyword-driven automated testing process. The idea in this process is to express the test cases in a very abstract manner, which is also precise enough to allow execution using test execution tools. The first form of this type of process is called data-driven testing, where a fixed set of test scripts is used with unique, parameterized data values for each test case. This makes the test scripts very generic so they can be used in multiple test cases.
 
--- Solved and remaining problems
+Keyword-driven testing (also called action-word testing) goes a bit further by using action keywords in test cases. Each keyword corresponds to a fragment of code, which allows the test execution tool to translate these test cases into executable test scripts. This has the added benefit of reducing the level of programming knowledge required from the test designers. 
+
+\subsection{Solved and remaining problems}
+The manual testing process has a lot of problems. The resulting coverage of SUT functionality is often imprecise. It has no capabilities for regression testing and all testing is very time consuming and costly in manpower. It also provides no effective measurements of test coverage. The capture/replay process suffers from very similar problems, although it offers limited capabilities for automated regression testing.
+
+Script based testing makes it possible to automatically execute and re-execute test cases. It is a significant evolution from the previous two processes, but this process too suffers from imprecise coverage of SUT functionality. It also comes with a set of it's own issues. Complex test scripts can be difficult to maintain and the requirements traceability needs to be developed manually. Keyword-driven testing eliminates the problems with test script maintenance but the remaining two issues are still valid for this process as well.
+
+The model based testing process aims to solve the following remaining problems: Automation of test design, including generation of expected results, reduction of test suite maintenance costs and automatic generation of the traceability matrix from requirements to test cases.
 
 \section{Model based testing process}
 TÄHÄN LISÄTÄÄN KUVA
+
+
 
 -- Main idea is to take the informal, mental model of expected SUT behaviour and create a formal model that enables automatic tc creation. 
 

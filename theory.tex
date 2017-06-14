@@ -99,17 +99,14 @@ Script based testing makes it possible to automatically execute and re-execute t
 The model based testing process aims to solve the following remaining problems: Automation of test design, including generation of expected results, reduction of test suite maintenance costs and automatic generation of the traceability matrix from requirements to test cases.
 
 \section{Model based testing process}
-In a model based testing process the idea is to take the informal model of the SUT behaviour and create a formal model that enables automatic creation of test cases. This is done in five main steps:
-\begin{enumerate}
-	\item Model SUT and/or it's environment
-	\item Generate abstract tests
-	\item Convert abstract tests into executable tests
-	\item Execute tests and assign verdicts
-	\item Analyze results
-\end{enumerate}
+In a model-based testing process the idea is to take the informal model of the SUT behaviour and create a formal model that enables automatic creation of test cases. This would enable the automation of the design of test cases and generation of the traceability matrix. Instead of manually writing hundreds of test cases, the designer would write an abstract model, which the testing tool can use to generate a set of test cases. This would reduce the time spent on test design as well as allow generation of a variety of test suites by simply using different selection criteria.
+
+The model-based testing process can be split into five main steps: Modelling of SUT and/or it's environment, generation of abstract tests, conversion of abstract tests into executable tests, test execution and verdicts and analysis of the results. The first two steps are the ones that distinguish model-based testing from the other processes described earlier.
 
 
 \subsection{The model}
+The first part of the testing process is the design of the abstract model. As the name suggests, this model should be a simplified version of the software and/or the environment it models. Instead of trying to model all interactions and features the model should be based on the key aspects that it is used to test. All unnecessary details should be omitted. Requirements identifiers should also be included in the model to document the relations between informal requirements and the formal model.
+
 -- Must be concice and precise. 
 
 -- Most essential thing in MBT.

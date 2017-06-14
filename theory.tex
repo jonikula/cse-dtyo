@@ -84,12 +84,20 @@ After the test scripts have been created, only minimal maintenance work needs to
 		\includegraphics*[width=0.3\textwidth]{kuvat/TS_process}
 	\end{center}
 	\caption{Script-based testing process}
-	\label{fig:crprocess}
+	\label{fig:tsprocess}
 \end{figure}
 
 The next step forwards from using test scripts is to raise the level of abstraction of these scripts. Since the most significant maintenance cost for the script-based process is updating the test scripts to match the changes in SUT implementation, the natural solution to reducing it would be to implement some sort of adaptors or helper libraries, which could then be used across multiple test scripts, thus reducing the time spent on maintenance. This idea is implemented in the keyword-driven automated testing process. The idea in this process is to express the test cases in a very abstract manner, which is also precise enough to allow execution using test execution tools. The first form of this type of process is called data-driven testing, where a fixed set of test scripts is used with unique, parameterized data values for each test case. This makes the test scripts very generic so they can be used in multiple test cases.
 
-Keyword-driven testing (also called action-word testing) goes a bit further by using action keywords in test cases. Each keyword corresponds to a fragment of code, which allows the test execution tool to translate these test cases into executable test scripts. This has the added benefit of reducing the level of programming knowledge required from the test designers. 
+Keyword-driven testing (also called action-word testing) goes a bit further by using action keywords in test cases. Each keyword corresponds to a fragment of code, which allows the test execution tool to translate these test cases into executable test scripts. This has the added benefit of reducing the level of programming knowledge required from the test designers.
+
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics*[width=0.3\textwidth]{kuvat/KW_process}
+	\end{center}
+	\caption{Keyword-driven automated testing process}
+	\label{fig:kwprocess}
+\end{figure}
 
 \subsection{Solved and remaining problems}
 The manual testing process has a lot of problems. The resulting coverage of SUT functionality is often imprecise. It has no capabilities for regression testing and all testing is very time consuming and costly in manpower. It also provides no effective measurements of test coverage. The capture/replay process suffers from very similar problems, although it offers limited capabilities for automated regression testing.

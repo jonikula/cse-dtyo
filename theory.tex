@@ -79,6 +79,14 @@ A further improvement in terms of test automation is a process that relies on te
 
 After the test scripts have been created, only minimal maintenance work needs to be done to make sure the scripts are up to date with the current version of the tested software. Manual work is still needed when initially creating the test scripts but after the initial investment in time the maintenance cost is significantly reduced. These test scripts also usually include some sort of method to determine the verdict of the test, which makes it easy to automatically generate reports, graphs and other kinds of data. This reduces the time required for analyzing the test results, as all the relevant information can be presented to the tester in a format, which enables him to quickly determine which tests passed without issues, which tests failed for known or expected reasons and which tests require further analysis.
 
+\begin{figure}[ht]
+	\begin{center}
+		\includegraphics*[width=0.3\textwidth]{kuvat/TS_process}
+	\end{center}
+	\caption{Script-based testing process}
+	\label{fig:crprocess}
+\end{figure}
+
 The next step forwards from using test scripts is to raise the level of abstraction of these scripts. Since the most significant maintenance cost for the script-based process is updating the test scripts to match the changes in SUT implementation, the natural solution to reducing it would be to implement some sort of adaptors or helper libraries, which could then be used across multiple test scripts, thus reducing the time spent on maintenance. This idea is implemented in the keyword-driven automated testing process. The idea in this process is to express the test cases in a very abstract manner, which is also precise enough to allow execution using test execution tools. The first form of this type of process is called data-driven testing, where a fixed set of test scripts is used with unique, parameterized data values for each test case. This makes the test scripts very generic so they can be used in multiple test cases.
 
 Keyword-driven testing (also called action-word testing) goes a bit further by using action keywords in test cases. Each keyword corresponds to a fragment of code, which allows the test execution tool to translate these test cases into executable test scripts. This has the added benefit of reducing the level of programming knowledge required from the test designers. 
@@ -91,18 +99,15 @@ Script based testing makes it possible to automatically execute and re-execute t
 The model based testing process aims to solve the following remaining problems: Automation of test design, including generation of expected results, reduction of test suite maintenance costs and automatic generation of the traceability matrix from requirements to test cases.
 
 \section{Model based testing process}
-TÄHÄN LISÄTÄÄN KUVA
+In a model based testing process the idea is to take the informal model of the SUT behaviour and create a formal model that enables automatic creation of test cases. This is done in five main steps:
+\begin{enumerate}
+	\item Model SUT and/or it's environment
+	\item Generate abstract tests
+	\item Convert abstract tests into executable tests
+	\item Execute tests and assign verdicts
+	\item Analyze results
+\end{enumerate}
 
-
-
--- Main idea is to take the informal, mental model of expected SUT behaviour and create a formal model that enables automatic tc creation. 
-
--- Five main steps
-	-- Model SUT and/or it's environment
-	-- Generate abstract tests
-	-- Concretize abs. tests into executable tests
-	-- Execute tests and assign verdicts
-	-- Analyze results
 
 \subsection{The model}
 -- Must be concice and precise. 

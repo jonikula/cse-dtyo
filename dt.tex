@@ -105,17 +105,21 @@
 \selectlanguage{english}
 
 \begin{abstract}
-In this thesis I will study model based testing (MBT) from the viewpoint of a testing tool developer and study how different kinds of options affect model coverage. As a part of this thesis I will also present a prototype of a testing tool that fulfills a set of requirements described later in this thesis. The tool is meant to be a prototype for generating tests for use in testing IoT applications.
+Model-based testing is a test technique that has evolved from automated testing techniques as the next step in software testing.  As the name suggests, it is built around modeling the software under test and using said model or models to automatically generate test suites. It's main selling points are cheap maintenance of test suites, ability to find issues in SUT requirements, it's ability to promote maturity in both SUT design and the testing process as well as the ability to generate test sequences, that would not be feasible to program manually or perform by hand. 
 
-\keywords Testing, Model Based Testing, Software Development, Internet of Things, Model Coverage.
+This thesis focuses on implementing model-based testing as a supplemental testing method to existing, script based tests. The purpose is to both familiarize the test engineers with the concept and implementation of model-based testing and to improve the quality of the software under test, which is a RESTful web service that is used as the backend of a large IoT application ecosystem.
+
+\keywords Testing, Model Based Testing, Software Development, Internet of Things, RESTful
 
 \end{abstract}
 
 \selectlanguage{finnish}
 \begin{tiivistelma}
-Tässä diplomityössä tutkitaan mallipohjaista testausta testityökalukehittäjän näkökulmasta ja perehdytään erilaisten valintojen vaikutusta testatun mallin kattavuuteen. Työn osana esitetään myös prototyyppi työkalusta, joka täyttää joukon myöhemmin kuvattuja vaatimuksia. Työkalu on tarkoitettu prototyypiksi testien generoimiseen esineiden internet-sovelluksia varten.
+Mallipohjainen testaus on testausmenetelmä, joka on kehittynyt automaattisista testausmenetelmistä seuraavaksi edistysaskeleeksi ohjelmiston testauksessa. Kuten menetelmän nimi antaa ymmärtää, mallipohjainen testaus rakentuu testattavan ohjelmiston mallintamisen ympärille siten, että yhdestä tai useammasta luodusta mallista tuotetaan automaattisesti testejä ohjelmiston testaamiseen. Tämän menetelmän tärkeimmät edut ovat testien helppo ja halpa ylläpito, ohjelmiston vaatimusmäärittelyn virheiden etsintä, ohjelmiston suunnittelun ja testausprosessin maturisointi sekä kyky automaattisesti tuottaa testisekvenssejä, joiden toteuttaminen manuaalisen testauksen tai käsin kirjoitettujen testien avulla olisi vaikeaa tai hyvin epäkäytännöllistä. 
 
-\avainsanat Testaus, Mallipohjainen testaus, ohjelmistokehitys, esineiden internet, mallikattavuus.
+Tässä työssä keskitytään mallipohjaisen testauksen toteuttamiseen olemassaolevia testausmenetelmiä tukevana menetelmänä. Työn tarkoitus on sekä tutustuttaa testausta tekeviä insinöörejä mallipohjaisen testauksen konseptiin ja toteuttamiseen sekä parantaa testattavan ohjelmiston laatua. Testauksen kohteena on RESTful tekniikalla toteutettu verkkopalvelu, joka toimii suuren esineiden internetin ekosysteemin taustalla.
+
+\avainsanat Testaus, Mallipohjainen testaus, ohjelmistokehitys, esineiden internet, RESTful.
 \end{tiivistelma}
 
 \selectlanguage{english}
